@@ -1,3 +1,23 @@
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        all_combinations = []
+        in_list = set()
+
+        def permute(curr_list):
+            if len(curr_list) == len(nums):
+                all_combinations.append(curr_list.copy())
+            else:
+                for x in nums:
+                    if x not in in_list:
+                        curr_list.append(x)
+                        in_list.add(x)
+                        permute(curr_list)
+                        curr_list.pop()
+                        in_list.remove(x)
+        permute([])
+        return all_combinations
+
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         if len(nums) <= 1:
