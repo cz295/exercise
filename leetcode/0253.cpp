@@ -1,3 +1,37 @@
+// ref answer
+
+
+// const size_t Start = 0;
+// const size_t End = 1;
+
+// class Solution {
+// public:
+//     int minMeetingRooms(vector<vector<int>>& intervals) {
+//         const int len = intervals.size();
+//         int requiredRooms = 0;
+//         int curRooms = 0;
+//         vector<int> futureEnds; make_heap(futureEnds.begin(), futureEnds.end(), std::greater<>{});
+
+//         std::sort(intervals.begin(), intervals.end(), [](const vector<int>& a, const vector<int>& b) -> bool {
+//             return a[Start] < b[Start] || (a[Start] == b[Start] && a[End] < b[End]);
+//         });
+
+//         for (size_t i = 0; i < len; i++) {
+//             vector<int>& cur = intervals[i];
+
+//             while (futureEnds.size() && futureEnds.front() <= cur[Start]) {
+//                 curRooms--;
+//                 pop_heap(futureEnds.begin(), futureEnds.end(), std::greater<>{}); futureEnds.pop_back();
+//             }
+
+//             curRooms++;
+//             futureEnds.push_back(cur[End]); push_heap(futureEnds.begin(), futureEnds.end(), std::greater<>{});
+//             requiredRooms = std::max(requiredRooms, curRooms);
+//         }
+
+//         return requiredRooms;
+//     }
+// };
 class Solution {
 public:
     int minMeetingRooms(vector<vector<int>>& intervals) {
